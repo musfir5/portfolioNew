@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Musfir — Oracle PL/SQL Developer &amp; Data Analyst</title>
+<meta name="description" content="Mohammed Musfir T T — Oracle PL/SQL Developer and Data Analyst in Kuwait. Data warehousing, Power BI, ETL and retail systems integration.">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/profile1.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#12181d;
+    --bg-panel:#1a2129;
+    --bg-card:#1f2830;
+    --ink:#ece9e2;
+    --ink-dim:#9aa3ab;
+    --ink-faint:#6b747c;
+    --gold:#e3a857;
+    --gold-dim:#c9944c;
+    --teal:#5db3aa;
+    --line:rgba(236,233,226,0.10);
+    --line-strong:rgba(236,233,226,0.18);
+    --paper:#f2ede1;
+    --paper-ink:#2a2620;
+    --radius:2px;
+    --serif:'Instrument Serif', Georgia, serif;
+    --mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  ::selection{ background:var(--gold); color:#1a1406; }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* ---------- eyebrow / mono labels ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--gold-dim);
+    display:inline-block;
+  }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:400;
+    color:var(--ink);
+    margin:0;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,24,29,0.86);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    font-family:var(--mono);
+    font-size:14px; font-weight:600;
+    letter-spacing:0.02em;
+    color:var(--ink);
+  }
+  .brand span{color:var(--gold);}
+  nav.links{
+    display:flex; gap:28px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  nav.links a{ position:relative; padding:4px 0; transition:color .2s; }
+  nav.links a:hover{ color:var(--ink); }
+  nav.links a::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:var(--gold); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  nav.links a:hover::after{ transform:scaleX(1); }
+
+  .nav-cta{
+    font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+    text-transform:uppercase;
+    border:1px solid var(--line-strong);
+    padding:9px 16px;
+    color:var(--ink);
+    transition:border-color .2s, color .2s, background .2s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ border-color:var(--gold); color:var(--gold); }
+
+  @media (max-width:820px){
+    nav.links{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 64px;
+    display:grid;
+    grid-template-columns:1.35fr 0.65fr;
+    gap:56px;
+    align-items:center;
+    border-bottom:1px solid var(--line);
+  }
+  .hero h1{
+    font-size:clamp(36px, 5.4vw, 64px);
+    line-height:1.06;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+  }
+  .hero p.lede{
+    font-size:17px;
+    color:var(--ink-dim);
+    max-width:52ch;
+    margin:22px 0 0;
+  }
+  .hero-meta{
+    margin-top:26px;
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-faint);
+    letter-spacing:0.02em;
+  }
+  .hero-meta span{ display:flex; align-items:center; gap:8px; }
+  .dot{ width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block; }
+
+  .hero-ctas{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:13px 22px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .btn-primary{ background:var(--gold); color:#1a1406; border:1px solid var(--gold); font-weight:600;}
+  .btn-primary:hover{ background:#f0bb75; transform:translateY(-1px); }
+  .btn-ghost{ border:1px solid var(--line-strong); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--ink-dim); transform:translateY(-1px); }
+
+  .hero-photo{
+    justify-self:center;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    position:relative;
+    padding:6px;
+    background:conic-gradient(from 200deg, var(--gold), transparent 30%, var(--teal) 60%, transparent 85%, var(--gold));
+    flex-shrink:0;
+  }
+  .hero-photo-inner{
+    background:var(--bg-panel);
+    border-radius:50%;
+    width:100%; height:100%;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-photo-inner img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
+
+  @media (max-width:820px){
+    .hero{ grid-template-columns:1fr; padding-top:56px; text-align:left;}
+    .hero-photo{ width:170px; height:170px; order:-1; }
+  }
+
+  /* ---------- LEDGER (signature element) ---------- */
+  .ledger-section{
+    padding:72px 0;
+    display:flex; justify-content:center;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(93,179,170,0.05), transparent 55%),
+      radial-gradient(ellipse at 80% 80%, rgba(227,168,87,0.05), transparent 55%);
+  }
+  .receipt{
+    width:100%; max-width:480px;
+    background:var(--paper);
+    color:var(--paper-ink);
+    font-family:var(--mono);
+    padding:34px 30px 26px;
+    position:relative;
+    transform:rotate(-0.6deg);
+    box-shadow:0 24px 60px -20px rgba(0,0,0,0.6), 0 4px 18px rgba(0,0,0,0.3);
+    clip-path:polygon(
+      0% 1%, 2% 0%, 4% 1%, 6% 0%, 8% 1%, 10% 0%, 12% 1%, 14% 0%, 16% 1%, 18% 0%,
+      20% 1%, 22% 0%, 24% 1%, 26% 0%, 28% 1%, 30% 0%, 32% 1%, 34% 0%, 36% 1%, 38% 0%,
+      40% 1%, 42% 0%, 44% 1%, 46% 0%, 48% 1%, 50% 0%, 52% 1%, 54% 0%, 56% 1%, 58% 0%,
+      60% 1%, 62% 0%, 64% 1%, 66% 0%, 68% 1%, 70% 0%, 72% 1%, 74% 0%, 76% 1%, 78% 0%,
+      80% 1%, 82% 0%, 84% 1%, 86% 0%, 88% 1%, 90% 0%, 92% 1%, 94% 0%, 96% 1%, 98% 0%, 100% 1%,
+      100% 99%, 98% 100%, 96% 99%, 94% 100%, 92% 99%, 90% 100%, 88% 99%, 86% 100%, 84% 99%, 82% 100%,
+      80% 99%, 78% 100%, 76% 99%, 74% 100%, 72% 99%, 70% 100%, 68% 99%, 66% 100%, 64% 99%, 62% 100%,
+      60% 99%, 58% 100%, 56% 99%, 54% 100%, 52% 99%, 50% 100%, 48% 99%, 46% 100%, 44% 99%, 42% 100%,
+      40% 99%, 38% 100%, 36% 99%, 34% 100%, 32% 99%, 30% 100%, 28% 99%, 26% 100%, 24% 99%, 22% 100%,
+      20% 99%, 18% 100%, 16% 99%, 14% 100%, 12% 99%, 10% 100%, 8% 99%, 6% 100%, 4% 99%, 2% 100%, 0% 99%
+    );
+  }
+  .receipt .r-head{
+    text-align:center;
+    border-bottom:1px dashed rgba(42,38,32,0.35);
+    padding-bottom:16px; margin-bottom:16px;
+  }
+  .receipt .r-head .r-title{
+    font-size:13px; letter-spacing:0.18em; font-weight:700; text-transform:uppercase;
+  }
+  .receipt .r-head .r-sub{
+    font-size:11px; color:#6b6355; margin-top:6px; letter-spacing:0.04em;
+  }
+  .r-row{
+    display:flex; justify-content:space-between; gap:14px;
+    font-size:13px; padding:7px 0;
+    border-bottom:1px dotted rgba(42,38,32,0.22);
+  }
+  .r-row .r-label{ color:#4a4438; }
+  .r-row .r-val{ font-weight:700; color:#1a1406; white-space:nowrap; }
+  .r-foot{
+    margin-top:18px; padding-top:14px;
+    border-top:1px dashed rgba(42,38,32,0.35);
+    text-align:center; font-size:11px; letter-spacing:0.12em; color:#6b6355;
+  }
+  .barcode{
+    height:34px; margin:14px auto 10px; max-width:220px;
+    background-image:repeating-linear-gradient(90deg, #1a1406 0px, #1a1406 2px, transparent 2px, transparent 5px, #1a1406 5px, #1a1406 6px, transparent 6px, transparent 9px);
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:88px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{ margin-bottom:44px; max-width:640px; }
+  .section-head h2{ font-size:clamp(28px,4vw,40px); }
+  .section-head p{ color:var(--ink-dim); margin-top:14px; font-size:15.5px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:0.9fr 1.6fr; gap:56px; align-items:start;
+  }
+  .about-facts{
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-dim);
+    border-left:1px solid var(--line-strong); padding-left:20px;
+  }
+  .about-facts .f-row{ padding:10px 0; border-bottom:1px solid var(--line); }
+  .about-facts .f-row:last-child{ border-bottom:none; }
+  .about-facts .f-key{ color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; margin-bottom:4px; }
+  .about-facts .f-val{ color:var(--ink); font-size:13px; }
+  .about-body p{ color:var(--ink-dim); font-size:16px; margin:0 0 18px; max-width:64ch; }
+  .about-body p strong{ color:var(--ink); font-weight:600; }
+
+  @media (max-width:820px){
+    .about-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-card{
+    display:grid; grid-template-columns:220px 1fr; gap:40px;
+    padding:36px 0; border-top:1px solid var(--line);
+  }
+  .exp-card:last-child{ padding-bottom:0; }
+  .exp-when{ font-family:var(--mono); font-size:12.5px; color:var(--gold); letter-spacing:.04em; }
+  .exp-role{ font-family:var(--serif); font-size:26px; margin:6px 0 4px; color:var(--ink); }
+  .exp-org{ color:var(--ink-dim); font-size:14.5px; margin-bottom:20px; }
+  .exp-group{ margin-bottom:22px; }
+  .exp-group:last-child{ margin-bottom:0; }
+  .exp-group h4{
+    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--teal); margin:0 0 10px; font-weight:600;
+  }
+  .exp-group ul{ margin:0; padding-left:18px; color:var(--ink-dim); font-size:14.5px; }
+  .exp-group li{ margin-bottom:8px; }
+  .exp-group li strong{ color:var(--ink); font-weight:600; }
+
+  @media (max-width:720px){
+    .exp-card{ grid-template-columns:1fr; gap:14px; }
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .proj-card{
+    background:var(--bg);
+    padding:34px;
+    display:flex; flex-direction:column;
+    transition:background .25s ease;
+  }
+  .proj-card:hover{ background:var(--bg-panel); }
+  .proj-num{ font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); margin-bottom:14px; }
+  .proj-card h3{ font-size:22px; margin-bottom:10px; }
+  .proj-problem{ font-size:13.5px; color:var(--ink-faint); margin-bottom:10px; }
+  .proj-problem b{ color:var(--ink-dim); font-weight:600; }
+  .proj-card p.desc{ color:var(--ink-dim); font-size:14.5px; margin:0 0 16px; flex-grow:1; }
+  .proj-impact{
+    font-family:var(--mono); font-size:12.5px; color:var(--gold);
+    border-top:1px dashed var(--line-strong); padding-top:12px; margin-bottom:16px;
+  }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink-dim); border:1px solid var(--line-strong); padding:4px 9px;
+  }
+
+  @media (max-width:720px){
+    .proj-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:36px 40px;
+  }
+  .skill-col h4{
+    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--gold); margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid var(--line-strong);
+  }
+  .skill-col ul{ list-style:none; margin:0; padding:0; }
+  .skill-col li{
+    font-size:14.5px; color:var(--ink-dim); padding:7px 0;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .skill-col li::before{ content:"—"; color:var(--ink-faint); }
+
+  @media (max-width:820px){
+    .skills-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:560px){
+    .skills-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display:flex; justify-content:space-between; gap:24px;
+    padding:20px 0; border-top:1px solid var(--line); flex-wrap:wrap;
+  }
+  .edu-row:last-child{ }
+  .edu-what{ font-size:17px; color:var(--ink); }
+  .edu-where{ font-size:13.5px; color:var(--ink-dim); margin-top:4px; }
+  .edu-when{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:end;
+  }
+  .contact-wrap h2{ font-size:clamp(32px,5vw,52px); max-width:14ch; }
+  .contact-links{ display:flex; flex-direction:column; gap:2px; }
+  .contact-link{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; border-top:1px solid var(--line-strong);
+    font-family:var(--mono); font-size:14px;
+    transition:padding-left .2s ease, color .2s ease;
+  }
+  .contact-link:last-child{ border-bottom:1px solid var(--line-strong); }
+  .contact-link .cl-label{ color:var(--ink-faint); text-transform:uppercase; font-size:11px; letter-spacing:.08em; }
+  .contact-link .cl-value{ color:var(--ink); }
+  .contact-link:hover{ padding-left:8px; color:var(--gold); }
+  .contact-link:hover .cl-value{ color:var(--gold); }
+
+  @media (max-width:820px){
+    .contact-wrap{ grid-template-columns:1fr; }
+  }
+
+  footer{
+    padding:34px 0 50px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+  }
+
+  /* entrance animation — CSS-only so content is never dependent on JS to become visible */
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:none; }
+  }
+  .reveal{ animation:fadeUp 0.7s ease both; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">MOHAMMED MUSFIR<span>.</span>T</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="assets/Mohammed_Musfir_CV.pdf" download>Download CV</a>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:1px solid var(--line); padding-top:96px;">
+    <div>
+      <p class="eyebrow">Oracle PL/SQL Developer — Data Analyst</p>
+      <h1>Turning hypermarket data<br>into <em>decisions.</em></h1>
+      <p class="lede">3+ years building reporting, data warehousing and integration systems for a multi-branch retail operation in Kuwait — from raw POS data to the dashboards executives check every morning.</p>
+      <div class="hero-meta">
+        <span><span class="dot"></span>Regency Group — Grand Hypermarket</span>
+        <span><span class="dot" style="background:var(--gold);"></span>Hawalli, Kuwait</span>
+        <span><span class="dot" style="background:var(--ink-faint);"></span>Open to GCC &amp; remote roles</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">View Projects →</a>
+        <a href="assets/Mohammed_Musfir_CV.pdf" download class="btn btn-ghost">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-inner">
+        <img src="assets/profile.png" alt="Portrait of Mohammed Musfir">
+      </div>
+    </div>
+  </section>
+
+  <!-- LEDGER -->
+   <!-- <section class="ledger-section" style="border-bottom:1px solid var(--line);">
+    <div class="receipt reveal">
+      <div class="r-head">
+        <div class="r-title">Impact Receipt</div>
+        <div class="r-sub">Regency Group · Grand Hypermarket · Jun 2023 – Present</div>
+      </div>
+      <div class="r-row"><span class="r-label">SQL reports engineered</span><span class="r-val">50+</span></div>
+      <div class="r-row"><span class="r-label">Departments served</span><span class="r-val">5+</span></div>
+      <div class="r-row"><span class="r-label">Daily sales report prep</span><span class="r-val">3H → &lt;5MIN</span></div>
+      <div class="r-row"><span class="r-label">Manual PO effort</span><span class="r-val">−80%</span></div>
+      <div class="r-row"><span class="r-label">Dashboard refresh time</span><span class="r-val">−60%</span></div>
+      <div class="r-row"><span class="r-label">Years in production</span><span class="r-val">3+</span></div>
+      <div class="barcode" aria-hidden="true"></div>
+      <div class="r-foot">THANK YOU FOR SCROLLING</div>
+    </div>
+  </section> -->
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-head reveal">
+      <p class="eyebrow">About</p>
+      <h2>Where the database meets the business.</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-facts">
+        <div class="f-row"><div class="f-key">Nationality</div><div class="f-val">Indian</div></div>
+        <div class="f-row"><div class="f-key">Based in</div><div class="f-val">Hawalli, Kuwait</div></div>
+        <div class="f-row"><div class="f-key">Role</div><div class="f-val">Oracle Developer / Data Analyst</div></div>
+        <div class="f-row"><div class="f-key">Company</div><div class="f-val">Regency Group — Grand Hypermarket</div></div>
+        <div class="f-row"><div class="f-key">Focus</div><div class="f-val">PL/SQL, Data Warehousing, Power BI, ASP.NET</div></div>
+        <div class="f-row"><div class="f-key">Currently learning</div><div class="f-val">Data modelling, ETL, Python</div></div>
+        <div class="f-row"><div class="f-key">Open to</div><div class="f-val">BI · Data Integration · Junior Data Engineering</div></div>
+      </div>
+      <div class="about-body">
+        <p>I'm an Oracle PL/SQL developer and data analyst working inside <strong>Grand Hypermarket</strong>, one of Kuwait's high-volume, multi-branch retail operations. My job sits between the database and the business — I write the SQL and PL/SQL that keeps Sales, Purchase, Inventory, Finance and HR running on accurate numbers, and I build the Power BI dashboards and internal tools that put those numbers in front of the people making decisions.</p>
+        <p>Most of what I build starts the same way: a process running on spreadsheets, manual TOAD scripts, or someone's memory — and my job is to turn it into a system that's indexed, automated, and reliable enough that nobody has to double-check it. That's meant architecting a Star Schema data warehouse from scratch, automating purchase orders off live stock rules, and building the ASP.NET portals that store and field staff use every day.</p>
+        <p>I'm currently deepening my data engineering and BI skills — data modelling, ETL design and Python — while finishing my <strong>B.C.A. in Computer Applications</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head reveal">
+      <p class="eyebrow">Experience</p>
+      <h2>What I've been building.</h2>
+    </div>
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-when">Jun 2023 — Present</div>
+      </div>
+      <div>
+        <h3 class="exp-role">Oracle Developer / Data Analyst</h3>
+        <div class="exp-org">Regency Group — Grand Hypermarket, Kuwait</div>
+
+        <div class="exp-group">
+          <h4>SQL Reporting &amp; Analytics</h4>
+          <ul>
+            <li>Engineered <strong>50+ Oracle SQL (10g)</strong> reports in Toad — product-, brand-, category- and location-wise breakdowns — cutting ad-hoc report delivery from days to <strong>under 1 hour</strong> across 5+ departments (Sales, Purchase, Inventory, Finance, HR).</li>
+            <li>Automated the daily Sales &amp; YTD comparison report (GP% and net profit) in Python, replacing a 3-hour manual build with a <strong>sub-5-minute</strong> run delivered to senior management every morning.</li>
+            <li>Built instant campaign-planning reports (discount eligibility, margin impact) enabling same-day decisions for marketing and planning teams.</li>
+          </ul>
+        </div>
+
+        <div class="exp-group">
+          <h4>Power BI Dashboards</h4>
+          <ul>
+            <li>Designed and maintain a full Power BI suite (Sales, Stock, Fast-lines, Customer, HR) — now management's primary reporting tool, replacing manual Excel consolidation.</li>
+            <li>Pre-aggregated Oracle views and indexed tables to cut dashboard refresh time by <strong>~60%</strong> versus querying raw tables directly.</li>
+          </ul>
+        </div>
+
+        <div class="exp-group">
+          <h4>PL/SQL &amp; Data Engineering</h4>
+          <ul>
+            <li>Architected a <strong>Star Schema data warehouse</strong> in Oracle PL/SQL with full ETL procedures, indexed views and temp tables — the single source of truth for BI and executive reporting.</li>
+            <li>Built an automated Purchase Order procedure triggered by stock-level rules, cutting manual PO effort by <strong>~80%</strong> across multiple branches.</li>
+            <li>Designed and maintain the Oracle schema, stored procedures and views behind the internal operations portal — Sales, Inventory, Finance and Loyalty modules.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head reveal">
+      <p class="eyebrow">Selected Projects</p>
+      <h2>Six systems, six real problems.</h2>
+      <p>Each of these replaced a manual, spreadsheet- or memory-dependent process with something indexed, validated, and owned end-to-end.</p>
+    </div>
+
+    <div class="proj-grid reveal">
+
+      <div class="proj-card">
+        <div class="proj-num">01 / Data Engineering</div>
+        <h3>Retail Data Warehouse</h3>
+        <div class="proj-problem"><b>Problem —</b> BI and executive reports pulled from inconsistent raw tables with no shared source of truth.</div>
+        <p class="desc">Architected a Star Schema warehouse using a Bronze → Silver → Gold layered approach, with ETL procedures, indexed views and Gold-layer reporting views covering five analysis types: change-over-time, cumulative, performance, part-to-whole and customer/product segmentation.</p>
+        <div class="proj-impact">Impact — single source of truth for all BI; ~60% faster Power BI refresh</div>
+        <div class="tags"><span class="tag">Oracle PL/SQL</span><span class="tag">ETL</span><span class="tag">Star Schema</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02 / Reporting Portal</div>
+        <h3>Sales Loss Due to Out-of-Stock</h3>
+        <div class="proj-problem"><b>Problem —</b> Stores had no way to quantify revenue and profit lost to stockouts.</div>
+        <p class="desc">Built an ASP.NET Web Forms + Oracle portal joining stock-inconsistency data with product master, purchase order activity and daily stock-on-hand — drillable by Article, Department, Sub-Category or store-type summary, with a staff remarks workflow.</p>
+        <div class="proj-impact">Impact — stockout loss now visible in real dollar terms, not guesswork</div>
+        <div class="tags"><span class="tag">ASP.NET Web Forms</span><span class="tag">Oracle SQL</span><span class="tag">AJAX</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03 / Automation</div>
+        <h3>Automated Purchase Order Engine</h3>
+        <div class="proj-problem"><b>Problem —</b> POs were created manually by planners watching stock levels — slow and inconsistent.</div>
+        <p class="desc">Built a PL/SQL procedure triggered by stock-level rules per article and location, generating purchase order logic automatically instead of relying on manual monitoring.</p>
+        <div class="proj-impact">Impact — ~80% less manual PO effort across multiple branches</div>
+        <div class="tags"><span class="tag">PL/SQL</span><span class="tag">Rule Engine</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">04 / Controls &amp; Audit</div>
+        <h3>Suspended Bills Clearance</h3>
+        <div class="proj-problem"><b>Problem —</b> Clearing old suspended POS bills required direct, unaudited database edits.</div>
+        <p class="desc">Extended the Suspended Bills report so store staff can punch a matching-value bill for validation — checked against location, cashier, value and date — with an admin-validation step, a new audit table, and a line-item view so staff know exactly what to re-key.</p>
+        <div class="proj-impact">Impact — closed an audit gap with a trackable, admin-validated workflow</div>
+        <div class="tags"><span class="tag">ASP.NET Web Forms</span><span class="tag">Oracle SQL</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">05 / Internal Tools</div>
+        <h3>Gift Card Activation Tool</h3>
+        <div class="proj-problem"><b>Problem —</b> Gift cards were activated via manual PL/SQL blocks run directly in TOAD — risky and error-prone on non-sequential card ranges.</div>
+        <p class="desc">Building an ASP.NET Web Forms page supporting both range-based and Excel copy-paste input, with pre-flight checks on total cards, total amount and existing card numbers before any bulk creation runs.</p>
+        <div class="proj-impact">Impact — removes direct production PL/SQL execution from a routine task</div>
+        <div class="tags"><span class="tag">ASP.NET</span><span class="tag">C#</span><span class="tag">PL/SQL</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">06 / Full-Stack</div>
+        <h3>Football Goal Kick Campaign</h3>
+        <div class="proj-problem"><b>Problem —</b> A promotional campaign needed staff and customer portals plus real-time POS data across outlets.</div>
+        <p class="desc">End-to-end system: an ASP.NET Core Web API and SQL Server schema with stored procedures, Web Forms staff/customer portals with JWT auth and OTP-based gift redemption, and a console app bridging the private Oracle POS database to the public SQL Server via polling.</p>
+        <div class="proj-impact">Impact — live promotional redemption across all hypermarket outlets</div>
+        <div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">SQL Server</span><span class="tag">JWT</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head reveal">
+      <p class="eyebrow">Stack</p>
+      <h2>Tools I reach for.</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-col">
+        <h4>Databases</h4>
+        <ul>
+          <li>Oracle SQL (10g)</li>
+          <li>Oracle PL/SQL</li>
+          <li>MS SQL Server</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>BI &amp; Reporting</h4>
+        <ul>
+          <li>Power BI</li>
+          <li>Python (Pandas)</li>
+          <li>Excel</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Data Engineering</h4>
+        <ul>
+          <li>ETL</li>
+          <li>Star Schema DWH</li>
+          <li>Stored Procedures &amp; Views</li>
+          <li>Indexing</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Languages</h4>
+        <ul>
+          <li>SQL / PL/SQL</li>
+          <li>Python</li>
+          <li>C#</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Frameworks</h4>
+        <ul>
+          <li>ASP.NET Core</li>
+          <li>ASP.NET Web Forms</li>
+          <li>REST APIs</li>
+          <li>Python Flask</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Other</h4>
+        <ul>
+          <li>ERP Integration</li>
+          <li>POS Systems</li>
+          <li>API Data Pipelines</li>
+          <li>Power BI Service</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" style="padding-top:0;">
+    <div class="section-head reveal">
+      <p class="eyebrow">Education</p>
+      <h2>Grounding.</h2>
+    </div>
+    <div class="reveal">
+      <div class="edu-row">
+        <div>
+          <div class="edu-what">B.C.A — Computer Applications <span style="color:var(--ink-faint); font-size:13px;">(in progress)</span></div>
+          <div class="edu-where">KL University, India</div>
+        </div>
+        <div class="edu-when">Expected Feb 2027</div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <div class="edu-what">Diploma — Computer Engineering <span style="color:var(--ink-faint); font-size:13px;">(CGPA 8.6)</span></div>
+          <div class="edu-where">SSM Polytechnic College, Kerala, India</div>
+        </div>
+        <div class="edu-when">Graduated Feb 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-wrap reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Let's talk data.</h2>
+        <p style="color:var(--ink-dim); margin-top:16px; max-width:42ch; font-size:15.5px;">Open to Oracle PL/SQL, BI, data integration and junior data engineering roles across Kuwait, the GCC and remote.</p>
+        <a href="assets/Mohammed_Musfir_CV.pdf" download class="btn btn-primary" style="margin-top:28px;">Download CV</a>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:musfirmohammed555@gmail.com">
+          <span class="cl-label">Email</span><span class="cl-value">musfirmohammed555@gmail.com</span>
+        </a>
+        <a class="contact-link" href="https://wa.me/96560672804" target="_blank" rel="noopener">
+          <span class="cl-label">WhatsApp / Phone</span><span class="cl-value">+965 6067 2804</span>
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/mohammed-musfir-t" target="_blank" rel="noopener">
+          <span class="cl-label">LinkedIn</span><span class="cl-value">/in/mohammed-musfir-t</span>
+        </a>
+        <a class="contact-link" href="https://github.com/musfir5" target="_blank" rel="noopener">
+          <span class="cl-label">GitHub</span><span class="cl-value">/musfir5</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Mohammed Musfir T T. Built with care, not a template.</span>
+    <span>Hawalli, Kuwait</span>
+  </footer>
+
+</main>
+
+<script>
+  // Mobile nav is intentionally simple: the link row collapses away below 820px
+  // and the Download CV button remains as the primary action.
+  // (Section entrance motion is handled entirely in CSS — see .reveal / @keyframes fadeUp —
+  // so the page never depends on JavaScript to make real content visible.)
+</script>
+
+</body>
+</html>
