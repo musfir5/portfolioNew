@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohammed Musfir — Oracle PL/SQL Developer &amp; Data Analyst</title>
-<meta name="description" content="Mohammed Musfir T T — Oracle PL/SQL Developer and Data Analyst in Kuwait. Data warehousing, Power BI, ETL and retail systems integration.">
+<title>Mohammed Musfir — Full Stack Developer & Data Engineer</title>
+<meta name="description" content="Mohammed Musfir T T — Full Stack Developer, Oracle PL/SQL Engineer and Data Engineer in Kuwait. 40+ projects across 11 departments for Grand Hypermarket. Data warehousing, .NET APIs, Python automation, retail systems integration.">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/profile1.png">
+  <script defer src="https://webtracker-opal.vercel.app/script.js" data-website-id="d910a72e-9eeb-4381-b735-07a23bd3ab1e"></script>
+  <script defer src="https://webtracker-opal.vercel.app/recorder.js" data-website-id="d910a72e-9eeb-4381-b735-07a23bd3ab1e"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,691 +16,1382 @@
 
 <style>
   :root{
-    --bg:#12181d;
-    --bg-panel:#1a2129;
-    --bg-card:#1f2830;
-    --ink:#ece9e2;
-    --ink-dim:#9aa3ab;
-    --ink-faint:#6b747c;
-    --gold:#e3a857;
-    --gold-dim:#c9944c;
-    --teal:#5db3aa;
-    --line:rgba(236,233,226,0.10);
-    --line-strong:rgba(236,233,226,0.18);
-    --paper:#f2ede1;
-    --paper-ink:#2a2620;
-    --radius:2px;
+    --bg:#0d1117;
+    --bg-2:#161b22;
+    --bg-3:#1c232d;
+    --ink:#e6edf3;
+    --ink-dim:#8b949e;
+    --ink-faint:#6e7681;
+    --gold:#d29922;
+    --gold-bright:#e3b341;
+    --gold-soft:rgba(210,153,34,0.12);
+    --teal:#2dd4bf;
+    --teal-soft:rgba(45,212,191,0.10);
+    --line:rgba(230,237,243,0.08);
+    --line-2:rgba(230,237,243,0.14);
     --serif:'Instrument Serif', Georgia, serif;
     --mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
   }
 
   body{
-    margin:0;
     background:var(--bg);
     color:var(--ink);
     font-family:var(--sans);
     font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
 
   img{max-width:100%; display:block;}
   a{color:inherit; text-decoration:none;}
+  ::selection{ background:var(--gold); color:#0d1117; }
 
-  .wrap{
-    max-width:1120px;
-    margin:0 auto;
-    padding:0 28px;
+  .container{ max-width:1140px; margin:0 auto; padding:0 32px; }
+
+  /* ── SCROLL PROGRESS ────────────────────────────────────────────── */
+  .scroll-bar{
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--teal));
+    z-index:100; transition:width 0.1s linear;
   }
 
-  ::selection{ background:var(--gold); color:#1a1406; }
-
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--gold);
-    outline-offset:3px;
-  }
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--gold);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin:0 0 18px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px; height:1px;
-    background:var(--gold-dim);
-    display:inline-block;
-  }
-
-  h1,h2,h3{
-    font-family:var(--serif);
-    font-weight:400;
-    color:var(--ink);
-    margin:0;
-  }
-
-  header.site-nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(18,24,29,0.86);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+  /* ── NAV ────────────────────────────────────────────────────────── */
+  nav.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(13,17,23,0.80);
+    backdrop-filter:blur(12px) saturate(180%);
+    -webkit-backdrop-filter:blur(12px) saturate(180%);
     border-bottom:1px solid var(--line);
+    transition:transform 0.3s ease;
   }
+  nav.hidden{ transform:translateY(-100%); }
   .nav-inner{
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px;
-    max-width:1120px; margin:0 auto;
+    padding:14px 32px;
+    max-width:1140px; margin:0 auto;
   }
   .brand{
     font-family:var(--mono);
-    font-size:14px; font-weight:600;
+    font-size:13px; font-weight:600;
     letter-spacing:0.02em;
     color:var(--ink);
   }
   .brand span{color:var(--gold);}
-  nav.links{
-    display:flex; gap:28px;
+  .nav-links{
+    display:flex; gap:32px;
     font-family:var(--mono);
-    font-size:12.5px;
+    font-size:12px;
     letter-spacing:0.06em;
     text-transform:uppercase;
     color:var(--ink-dim);
   }
-  nav.links a{ position:relative; padding:4px 0; transition:color .2s; }
-  nav.links a:hover{ color:var(--ink); }
-  nav.links a::after{
-    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  .nav-links a{ position:relative; padding:4px 0; transition:color 0.2s; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px;
     background:var(--gold); transform:scaleX(0); transform-origin:left;
-    transition:transform .25s ease;
+    transition:transform 0.3s ease;
   }
-  nav.links a:hover::after{ transform:scaleX(1); }
-
+  .nav-links a:hover::after{ transform:scaleX(1); }
   .nav-cta{
-    font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+    font-family:var(--mono); font-size:11px; letter-spacing:.06em;
     text-transform:uppercase;
-    border:1px solid var(--line-strong);
-    padding:9px 16px;
+    border:1px solid var(--line-2);
+    padding:8px 16px;
     color:var(--ink);
-    transition:border-color .2s, color .2s, background .2s;
-    white-space:nowrap;
+    transition:all 0.2s;
   }
-  .nav-cta:hover{ border-color:var(--gold); color:var(--gold); }
+  .nav-cta:hover{ border-color:var(--gold); color:var(--gold); background:var(--gold-soft); }
+  @media (max-width:768px){ .nav-links{ display:none; } }
 
-  @media (max-width:820px){
-    nav.links{ display:none; }
-  }
-
+  /* ── HERO ───────────────────────────────────────────────────────── */
   .hero{
-    padding:96px 0 64px;
-    display:grid;
-    grid-template-columns:1.35fr 0.65fr;
-    gap:56px;
-    align-items:center;
-    border-bottom:1px solid var(--line);
+    min-height:100vh;
+    display:flex; align-items:center;
+    position:relative;
+    overflow:hidden;
+    padding:120px 0 80px;
+  }
+  .hero::before{
+    content:""; position:absolute; top:0; right:-10%;
+    width:600px; height:600px;
+    background:radial-gradient(circle, var(--gold-soft), transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:""; position:absolute; bottom:-10%; left:-5%;
+    width:500px; height:500px;
+    background:radial-gradient(circle, var(--teal-soft), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-content{ position:relative; z-index:1; max-width:780px; }
+  .hero-tag{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--gold);
+    display:inline-flex; align-items:center; gap:10px;
+    margin-bottom:24px;
+    padding:6px 14px;
+    border:1px solid var(--line-2);
+    border-radius:100px;
+    background:rgba(13,17,23,0.6);
+  }
+  .hero-tag .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--teal);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.4; }
   }
   .hero h1{
-    font-size:clamp(36px, 5.4vw, 64px);
-    line-height:1.06;
-    letter-spacing:-0.01em;
+    font-family:var(--serif);
+    font-size:clamp(40px, 7vw, 84px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    margin-bottom:28px;
   }
   .hero h1 em{
     font-style:italic;
     color:var(--gold);
+    position:relative;
   }
-  .hero p.lede{
-    font-size:17px;
-    color:var(--ink-dim);
-    max-width:52ch;
-    margin:22px 0 0;
+  .hero h1 em::after{
+    content:""; position:absolute; bottom:4px; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:0.5;
   }
+  .hero-lede{
+    font-size:18px; color:var(--ink-dim);
+    max-width:56ch; margin-bottom:36px; line-height:1.65;
+  }
+  .hero-lede strong{ color:var(--ink); font-weight:600; }
   .hero-meta{
-    margin-top:26px;
-    display:flex; flex-wrap:wrap; gap:10px 22px;
-    font-family:var(--mono); font-size:12.5px; color:var(--ink-faint);
-    letter-spacing:0.02em;
+    display:flex; flex-wrap:wrap; gap:12px 28px;
+    font-family:var(--mono); font-size:12px; color:var(--ink-faint);
+    margin-bottom:40px;
   }
   .hero-meta span{ display:flex; align-items:center; gap:8px; }
-  .dot{ width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block; }
-
-  .hero-ctas{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-meta .dot{ width:6px; height:6px; border-radius:50%; }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
   .btn{
-    font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; text-transform:uppercase;
-    padding:13px 22px;
-    display:inline-flex; align-items:center; gap:8px;
-    transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    font-family:var(--mono); font-size:13px; letter-spacing:.04em;
+    padding:14px 28px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:all 0.25s ease;
+    border-radius:2px;
   }
-  .btn-primary{ background:var(--gold); color:#1a1406; border:1px solid var(--gold); font-weight:600;}
-  .btn-primary:hover{ background:#f0bb75; transform:translateY(-1px); }
-  .btn-ghost{ border:1px solid var(--line-strong); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--ink-dim); transform:translateY(-1px); }
+  .btn-primary{
+    background:var(--gold); color:#0d1117; font-weight:600;
+    border:1px solid var(--gold);
+  }
+  .btn-primary:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 8px 24px rgba(210,153,34,0.3); }
+  .btn-ghost{
+    border:1px solid var(--line-2); color:var(--ink);
+  }
+  .btn-ghost:hover{ border-color:var(--ink-dim); background:var(--bg-2); transform:translateY(-2px); }
 
-  .hero-photo{
-    justify-self:center;
-    width:240px;
-    height:240px;
-    border-radius:50%;
+  /* ── STATS ──────────────────────────────────────────────────────── */
+  .stats{
+    padding:0 0 80px;
     position:relative;
-    padding:6px;
-    background:conic-gradient(from 200deg, var(--gold), transparent 30%, var(--teal) 60%, transparent 85%, var(--gold));
-    flex-shrink:0;
   }
-  .hero-photo-inner{
-    background:var(--bg-panel);
-    border-radius:50%;
-    width:100%; height:100%;
-    overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:1px;
+    background:var(--line);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
   }
-  .hero-photo-inner img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
-
-  @media (max-width:820px){
-    .hero{ grid-template-columns:1fr; padding-top:56px; text-align:left;}
-    .hero-photo{ width:170px; height:170px; order:-1; }
-  }
-
-  .ledger-section{
-    padding:72px 0;
-    display:flex; justify-content:center;
-    background:
-      radial-gradient(ellipse at 20% 20%, rgba(93,179,170,0.05), transparent 55%),
-      radial-gradient(ellipse at 80% 80%, rgba(227,168,87,0.05), transparent 55%);
-  }
-  .receipt{
-    width:100%; max-width:480px;
-    background:var(--paper);
-    color:var(--paper-ink);
-    font-family:var(--mono);
-    padding:34px 30px 26px;
-    position:relative;
-    transform:rotate(-0.6deg);
-    box-shadow:0 24px 60px -20px rgba(0,0,0,0.6), 0 4px 18px rgba(0,0,0,0.3);
-    clip-path:polygon(
-      0% 1%, 2% 0%, 4% 1%, 6% 0%, 8% 1%, 10% 0%, 12% 1%, 14% 0%, 16% 1%, 18% 0%,
-      20% 1%, 22% 0%, 24% 1%, 26% 0%, 28% 1%, 30% 0%, 32% 1%, 34% 0%, 36% 1%, 38% 0%,
-      40% 1%, 42% 0%, 44% 1%, 46% 0%, 48% 1%, 50% 0%, 52% 1%, 54% 0%, 56% 1%, 58% 0%,
-      60% 1%, 62% 0%, 64% 1%, 66% 0%, 68% 1%, 70% 0%, 72% 1%, 74% 0%, 76% 1%, 78% 0%,
-      80% 1%, 82% 0%, 84% 1%, 86% 0%, 88% 1%, 90% 0%, 92% 1%, 94% 0%, 96% 1%, 98% 0%, 100% 1%,
-      100% 99%, 98% 100%, 96% 99%, 94% 100%, 92% 99%, 90% 100%, 88% 99%, 86% 100%, 84% 99%, 82% 100%,
-      80% 99%, 78% 100%, 76% 99%, 74% 100%, 72% 99%, 70% 100%, 68% 99%, 66% 100%, 64% 99%, 62% 100%,
-      60% 99%, 58% 100%, 56% 99%, 54% 100%, 52% 99%, 50% 100%, 48% 99%, 46% 100%, 44% 99%, 42% 100%,
-      40% 99%, 38% 100%, 36% 99%, 34% 100%, 32% 99%, 30% 100%, 28% 99%, 26% 100%, 24% 99%, 22% 100%,
-      20% 99%, 18% 100%, 16% 99%, 14% 100%, 12% 99%, 10% 100%, 8% 99%, 6% 100%, 4% 99%, 2% 100%, 0% 99%
-    );
-  }
-  .receipt .r-head{
+  .stat{
+    background:var(--bg);
+    padding:40px 24px;
     text-align:center;
-    border-bottom:1px dashed rgba(42,38,32,0.35);
-    padding-bottom:16px; margin-bottom:16px;
+    transition:background 0.3s;
   }
-  .receipt .r-head .r-title{
-    font-size:13px; letter-spacing:0.18em; font-weight:700; text-transform:uppercase;
+  .stat:hover{ background:var(--bg-2); }
+  .stat-num{
+    font-family:var(--serif);
+    font-size:clamp(32px, 4vw, 48px);
+    color:var(--gold);
+    line-height:1;
+    margin-bottom:10px;
   }
-  .receipt .r-head .r-sub{
-    font-size:11px; color:#6b6355; margin-top:6px; letter-spacing:0.04em;
+  .stat-label{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
   }
-  .r-row{
-    display:flex; justify-content:space-between; gap:14px;
-    font-size:13px; padding:7px 0;
-    border-bottom:1px dotted rgba(42,38,32,0.22);
-  }
-  .r-row .r-label{ color:#4a4438; }
-  .r-row .r-val{ font-weight:700; color:#1a1406; white-space:nowrap; }
-  .r-foot{
-    margin-top:18px; padding-top:14px;
-    border-top:1px dashed rgba(42,38,32,0.35);
-    text-align:center; font-size:11px; letter-spacing:0.12em; color:#6b6355;
-  }
-  .barcode{
-    height:34px; margin:14px auto 10px; max-width:220px;
-    background-image:repeating-linear-gradient(90deg, #1a1406 0px, #1a1406 2px, transparent 2px, transparent 5px, #1a1406 5px, #1a1406 6px, transparent 6px, transparent 9px);
+  @media (max-width:768px){
+    .stats-grid{ grid-template-columns:repeat(2, 1fr); }
   }
 
-  section{ padding:88px 0; border-bottom:1px solid var(--line); }
-  section:last-of-type{ border-bottom:none; }
-  .section-head{ margin-bottom:44px; max-width:640px; }
-  .section-head h2{ font-size:clamp(28px,4vw,40px); }
-  .section-head p{ color:var(--ink-dim); margin-top:14px; font-size:15.5px; }
+  /* ── SECTION HEADER ─────────────────────────────────────────────── */
+  .section{ padding:100px 0; }
+  .section-head{ margin-bottom:56px; }
+  .section-eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--gold);
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:16px;
+  }
+  .section-eyebrow::before{
+    content:""; width:28px; height:1px; background:var(--gold); display:inline-block;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-size:clamp(30px, 4.5vw, 48px);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    max-width:20ch;
+  }
+  .section-head p{
+    color:var(--ink-dim); margin-top:16px; font-size:15px; max-width:60ch;
+  }
 
+  /* ── ABOUT ──────────────────────────────────────────────────────── */
   .about-grid{
-    display:grid; grid-template-columns:0.9fr 1.6fr; gap:56px; align-items:start;
+    display:grid; grid-template-columns:1fr 2fr; gap:64px; align-items:start;
   }
   .about-facts{
-    font-family:var(--mono); font-size:12.5px; color:var(--ink-dim);
-    border-left:1px solid var(--line-strong); padding-left:20px;
+    font-family:var(--mono); font-size:12px; color:var(--ink-dim);
+    border-left:1px solid var(--line-2); padding-left:24px;
   }
-  .about-facts .f-row{ padding:10px 0; border-bottom:1px solid var(--line); }
+  .about-facts .f-row{ padding:12px 0; border-bottom:1px solid var(--line); }
   .about-facts .f-row:last-child{ border-bottom:none; }
-  .about-facts .f-key{ color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em; font-size:10.5px; margin-bottom:4px; }
+  .about-facts .f-key{ color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em; font-size:10px; margin-bottom:4px; }
   .about-facts .f-val{ color:var(--ink); font-size:13px; }
-  .about-body p{ color:var(--ink-dim); font-size:16px; margin:0 0 18px; max-width:64ch; }
+  .about-body p{ color:var(--ink-dim); font-size:16.5px; margin-bottom:20px; max-width:65ch; line-height:1.7; }
   .about-body p strong{ color:var(--ink); font-weight:600; }
-
-  @media (max-width:820px){
-    .about-grid{ grid-template-columns:1fr; }
+  .about-body .highlight{
+    color:var(--gold); font-family:var(--mono); font-size:13px;
+    border-left:2px solid var(--gold); padding-left:14px; margin:24px 0;
+    display:block;
   }
+  @media (max-width:768px){ .about-grid{ grid-template-columns:1fr; gap:32px; } }
 
-  .exp-card{
-    display:grid; grid-template-columns:220px 1fr; gap:40px;
-    padding:36px 0; border-top:1px solid var(--line);
-  }
-  .exp-card:last-child{ padding-bottom:0; }
-  .exp-when{ font-family:var(--mono); font-size:12.5px; color:var(--gold); letter-spacing:.04em; }
-  .exp-role{ font-family:var(--serif); font-size:26px; margin:6px 0 4px; color:var(--ink); }
-  .exp-org{ color:var(--ink-dim); font-size:14.5px; margin-bottom:20px; }
-  .exp-group{ margin-bottom:22px; }
-  .exp-group:last-child{ margin-bottom:0; }
-  .exp-group h4{
-    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em;
-    color:var(--teal); margin:0 0 10px; font-weight:600;
-  }
-  .exp-group ul{ margin:0; padding-left:18px; color:var(--ink-dim); font-size:14.5px; }
-  .exp-group li{ margin-bottom:8px; }
-  .exp-group li strong{ color:var(--ink); font-weight:600; }
-
-  @media (max-width:720px){
-    .exp-card{ grid-template-columns:1fr; gap:14px; }
-  }
-
-  .proj-grid{
+  /* ── CAPABILITIES ───────────────────────────────────────────────── */
+  .cap-grid{
     display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
     background:var(--line);
     border:1px solid var(--line);
   }
+  .cap-card{
+    background:var(--bg);
+    padding:40px;
+    display:flex; flex-direction:column;
+    transition:background 0.3s;
+    position:relative;
+  }
+  .cap-card:hover{ background:var(--bg-2); }
+  .cap-card::before{
+    content:""; position:absolute; top:0; left:0; width:0; height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--teal));
+    transition:width 0.4s ease;
+  }
+  .cap-card:hover::before{ width:100%; }
+  .cap-num{
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    letter-spacing:0.08em; margin-bottom:20px;
+  }
+  .cap-card h3{
+    font-family:var(--serif); font-size:24px; margin-bottom:14px;
+  }
+  .cap-card p{ color:var(--ink-dim); font-size:14px; margin-bottom:20px; flex-grow:1; line-height:1.6; }
+  .cap-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .cap-tag{
+    font-family:var(--mono); font-size:10px; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink-dim); border:1px solid var(--line-2); padding:4px 10px;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .cap-card:hover .cap-tag{ border-color:var(--line-2); color:var(--ink); }
+  @media (max-width:768px){ .cap-grid{ grid-template-columns:1fr; } }
+
+  /* ── EXPERIENCE ─────────────────────────────────────────────────── */
+  .exp-timeline{
+    position:relative;
+    padding-left:0;
+  }
+  .exp-card{
+    display:grid; grid-template-columns:180px 1fr; gap:48px;
+    padding:0 0 48px;
+    position:relative;
+  }
+  .exp-card::before{
+    content:""; position:absolute; left:180px; top:8px; bottom:0;
+    width:1px; background:var(--line);
+  }
+  .exp-card:last-child::before{ display:none; }
+  .exp-card::after{
+    content:""; position:absolute; left:176px; top:8px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--gold);
+    z-index:1;
+  }
+  .exp-when{
+    font-family:var(--mono); font-size:12px; color:var(--gold);
+    letter-spacing:.04em; padding-top:4px;
+  }
+  .exp-when-org{ color:var(--ink-faint); font-size:11px; margin-top:6px; }
+  .exp-role{
+    font-family:var(--serif); font-size:28px; margin-bottom:8px; color:var(--ink);
+  }
+  .exp-org{ color:var(--ink-dim); font-size:14px; margin-bottom:24px; }
+  .exp-group{ margin-bottom:24px; }
+  .exp-group:last-child{ margin-bottom:0; }
+  .exp-group h4{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--teal); margin-bottom:12px; font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .exp-group h4::before{
+    content:""; width:16px; height:1px; background:var(--teal); display:inline-block;
+  }
+  .exp-group ul{ margin:0; padding-left:20px; color:var(--ink-dim); font-size:14.5px; }
+  .exp-group li{ margin-bottom:10px; line-height:1.6; }
+  .exp-group li strong{ color:var(--ink); font-weight:600; }
+  @media (max-width:768px){
+    .exp-card{ grid-template-columns:1fr; gap:16px; }
+    .exp-card::before, .exp-card::after{ display:none; }
+  }
+
+  /* ── PROJECTS ───────────────────────────────────────────────────── */
+  .proj-list{ display:flex; flex-direction:column; gap:1px; background:var(--line); }
   .proj-card{
     background:var(--bg);
-    padding:34px;
-    display:flex; flex-direction:column;
-    transition:background .25s ease;
+    padding:48px;
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:48px;
+    align-items:start;
+    transition:background 0.3s;
   }
-  .proj-card:hover{ background:var(--bg-panel); }
-  .proj-num{ font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); margin-bottom:14px; }
-  .proj-card h3{ font-size:22px; margin-bottom:10px; }
-  .proj-problem{ font-size:13.5px; color:var(--ink-faint); margin-bottom:10px; }
-  .proj-problem b{ color:var(--ink-dim); font-weight:600; }
-  .proj-card p.desc{ color:var(--ink-dim); font-size:14.5px; margin:0 0 16px; flex-grow:1; }
+  .proj-card:hover{ background:var(--bg-2); }
+  .proj-left{ }
+  .proj-num{
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+    letter-spacing:0.08em; margin-bottom:16px;
+  }
+  .proj-card h3{
+    font-family:var(--serif); font-size:26px; margin-bottom:16px; line-height:1.15;
+  }
   .proj-impact{
-    font-family:var(--mono); font-size:12.5px; color:var(--gold);
-    border-top:1px dashed var(--line-strong); padding-top:12px; margin-bottom:16px;
+    font-family:var(--mono); font-size:12px; color:var(--gold);
+    padding:12px 16px;
+    background:var(--gold-soft);
+    border-left:2px solid var(--gold);
+    margin-top:20px;
+    line-height:1.5;
   }
-  .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .proj-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
   .tag{
-    font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase;
-    color:var(--ink-dim); border:1px solid var(--line-strong); padding:4px 9px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink-dim); border:1px solid var(--line-2); padding:4px 10px;
+  }
+  .proj-right{ }
+  .proj-problem{
+    font-size:14px; color:var(--ink-faint); margin-bottom:16px;
+    padding:14px 18px; background:var(--bg-2); border-radius:4px;
+    border-left:3px solid var(--ink-faint);
+  }
+  .proj-problem b{ color:var(--ink-dim); font-weight:600; }
+  .proj-card p.desc{
+    color:var(--ink-dim); font-size:15px; line-height:1.7; margin:0;
+  }
+  @media (max-width:768px){
+    .proj-card{ grid-template-columns:1fr; gap:24px; padding:32px; }
   }
 
-  @media (max-width:720px){
-    .proj-grid{ grid-template-columns:1fr; }
-  }
-
+  /* ── SKILLS ─────────────────────────────────────────────────────── */
   .skills-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:36px 40px;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px 40px;
   }
   .skill-col h4{
-    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em;
-    color:var(--gold); margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid var(--line-strong);
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--gold); margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--line-2);
   }
-  .skill-col ul{ list-style:none; margin:0; padding:0; }
+  .skill-col ul{ list-style:none; }
   .skill-col li{
-    font-size:14.5px; color:var(--ink-dim); padding:7px 0;
+    font-size:14px; color:var(--ink-dim); padding:8px 0;
     border-bottom:1px solid var(--line);
     display:flex; align-items:center; gap:10px;
+    transition:color 0.2s, padding-left 0.2s;
   }
-  .skill-col li::before{ content:"—"; color:var(--ink-faint); }
+  .skill-col li:hover{ color:var(--ink); padding-left:4px; }
+  .skill-col li::before{ content:"\2014"; color:var(--ink-faint); }
+  @media (max-width:820px){ .skills-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .skills-grid{ grid-template-columns:1fr; } }
 
-  @media (max-width:820px){
-    .skills-grid{ grid-template-columns:repeat(2,1fr); }
-  }
-  @media (max-width:560px){
-    .skills-grid{ grid-template-columns:1fr; }
-  }
-
+  /* ── EDUCATION ──────────────────────────────────────────────────── */
   .edu-row{
     display:flex; justify-content:space-between; gap:24px;
-    padding:20px 0; border-top:1px solid var(--line); flex-wrap:wrap;
+    padding:24px 0; border-top:1px solid var(--line); flex-wrap:wrap;
+    transition:padding-left 0.2s;
   }
+  .edu-row:hover{ padding-left:8px; }
   .edu-what{ font-size:17px; color:var(--ink); }
   .edu-where{ font-size:13.5px; color:var(--ink-dim); margin-top:4px; }
   .edu-when{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
 
-  .contact-wrap{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:end;
+  /* ── CONTACT ────────────────────────────────────────────────────── */
+  .contact-section{
+    padding:100px 0;
+    position:relative;
+    overflow:hidden;
   }
-  .contact-wrap h2{ font-size:clamp(32px,5vw,52px); max-width:14ch; }
-  .contact-links{ display:flex; flex-direction:column; gap:2px; }
+  .contact-section::before{
+    content:""; position:absolute; top:50%; left:50%;
+    width:800px; height:400px;
+    background:radial-gradient(ellipse, var(--gold-soft), transparent 70%);
+    transform:translate(-50%, -50%);
+    pointer-events:none;
+  }
+  .contact-inner{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end;
+  }
+  .contact-inner h2{
+    font-family:var(--serif);
+    font-size:clamp(36px, 5.5vw, 60px);
+    line-height:1.05;
+    max-width:16ch;
+  }
+  .contact-inner h2 em{ font-style:italic; color:var(--gold); }
+  .contact-sub{
+    color:var(--ink-dim); margin-top:20px; font-size:15px; max-width:42ch;
+  }
+  .contact-links{ display:flex; flex-direction:column; gap:0; }
   .contact-link{
     display:flex; justify-content:space-between; align-items:center;
-    padding:18px 0; border-top:1px solid var(--line-strong);
+    padding:20px 0; border-top:1px solid var(--line-2);
     font-family:var(--mono); font-size:14px;
-    transition:padding-left .2s ease, color .2s ease;
+    transition:padding-left 0.2s, color 0.2s;
   }
-  .contact-link:last-child{ border-bottom:1px solid var(--line-strong); }
+  .contact-link:last-child{ border-bottom:1px solid var(--line-2); }
   .contact-link .cl-label{ color:var(--ink-faint); text-transform:uppercase; font-size:11px; letter-spacing:.08em; }
   .contact-link .cl-value{ color:var(--ink); }
-  .contact-link:hover{ padding-left:8px; color:var(--gold); }
+  .contact-link:hover{ padding-left:12px; color:var(--gold); }
   .contact-link:hover .cl-value{ color:var(--gold); }
+  @media (max-width:768px){ .contact-inner{ grid-template-columns:1fr; gap:32px; } }
 
-  @media (max-width:820px){
-    .contact-wrap{ grid-template-columns:1fr; }
-  }
-
+  /* ── FOOTER ─────────────────────────────────────────────────────── */
   footer{
-    padding:34px 0 50px;
+    padding:40px 0 50px;
+    border-top:1px solid var(--line);
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
-    font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+    font-family:var(--mono); font-size:11px; color:var(--ink-faint);
   }
 
+  /* ── ANIMATIONS ─────────────────────────────────────────────────── */
   @keyframes fadeUp{
-    from{ opacity:0; transform:translateY(14px); }
+    from{ opacity:0; transform:translateY(20px); }
     to{ opacity:1; transform:none; }
   }
-  .reveal{ animation:fadeUp 0.7s ease both; }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ animation:none; }
+  .reveal{ animation:fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ animation:none; } }
+
+  /* ── DIVIDER ────────────────────────────────────────────────────── */
+  .divider{
+    height:1px; background:var(--line);
+    max-width:1140px; margin:0 auto;
   }
 </style>
 </head>
 <body>
 
-<header class="site-nav">
+<div class="scroll-bar" id="scrollBar"></div>
+
+<nav class="site-nav" id="nav">
   <div class="nav-inner">
     <a href="#top" class="brand">MOHAMMED MUSFIR<span>.</span>T</a>
-    <nav class="links">
+    <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-    </nav>
+    </div>
     <a class="nav-cta" href="assets/Mohammed_Musfir_CV.pdf" download>Download CV</a>
   </div>
-</header>
+</nav>
 
-<main id="top" class="wrap">
+<main id="top">
 
-  <!-- HERO -->
-  <section class="hero" style="border-bottom:1px solid var(--line); padding-top:96px;">
-    <div>
-      <p class="eyebrow">Oracle PL/SQL Developer — Data Analyst</p>
-      <h1>Turning hypermarket data<br>into <em>decisions.</em></h1>
-      <p class="lede">3+ years engineering SQL reporting, PL/SQL automation, ETL/data warehousing and Power BI dashboards for a high-volume, multi-branch retail operation in Kuwait — delivering the numbers Sales, Purchase, Inventory, Finance and HR act on every day.</p>
-      <div class="hero-meta">
-        <span><span class="dot"></span>Regency Group — Grand Hypermarket</span>
-        <span><span class="dot" style="background:var(--gold);"></span>Hawalli, Kuwait</span>
-        <span><span class="dot" style="background:var(--ink-faint);"></span>Open to GCC &amp; remote roles</span>
-      </div>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn btn-primary">View Projects →</a>
-      <!--  <a href="assets/Mohammed_Musfir_CV.pdf" download class="btn btn-ghost">Download CV</a> -->
-      </div>
-    </div>
-    <div class="hero-photo">
-      <div class="hero-photo-inner">
-        <img src="assets/profile.png" alt="Portrait of Mohammed Musfir">
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-head reveal">
-      <p class="eyebrow">About</p>
-      <h2>Where the database meets the business.</h2>
-    </div>
-    <div class="about-grid reveal">
-      <div class="about-facts">
-        <div class="f-row"><div class="f-key">Nationality</div><div class="f-val">Indian</div></div>
-        <div class="f-row"><div class="f-key">Based in</div><div class="f-val">Hawalli, Kuwait</div></div>
-        <div class="f-row"><div class="f-key">Role</div><div class="f-val">Oracle Developer / Data Analyst</div></div>
-        <div class="f-row"><div class="f-key">Company</div><div class="f-val">Regency Group — Grand Hypermarket</div></div>
-        <div class="f-row"><div class="f-key">Focus</div><div class="f-val">PL/SQL, Data Warehousing, Power BI, ETL</div></div>
-        <div class="f-row"><div class="f-key">Currently learning</div><div class="f-val">Data modelling, ETL, Python</div></div>
-        <div class="f-row"><div class="f-key">Open to</div><div class="f-val">BI · Data Integration · Junior Data Engineering</div></div>
-      </div>
-      <div class="about-body">
-        <p>I'm an Oracle PL/SQL developer and data analyst working inside <strong>Grand Hypermarket</strong>, one of Kuwait's high-volume, multi-branch retail operations. My job sits between the database and the business — I write the SQL and PL/SQL that keeps Sales, Purchase, Inventory, Finance and HR running on accurate numbers, and I build the Power BI dashboards that put those numbers in front of the people making decisions.</p>
-        <p>Most of what I build starts the same way: a process running on spreadsheets, manual TOAD scripts, or someone's memory — and my job is to turn it into a system that's indexed, automated, and reliable enough that nobody has to double-check it. That's meant architecting a Star Schema data warehouse from scratch, automating purchase orders off live stock rules, and building the internal reporting portals that store and head-office staff use every day.</p>
-        <p>I'm currently deepening my data engineering and BI skills — data modelling, ETL design and Python — while finishing my <strong>B.C.A. in Computer Applications</strong>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-head reveal">
-      <p class="eyebrow">Experience</p>
-      <h2>What I've been building.</h2>
-    </div>
-    <div class="exp-card reveal">
-      <div>
-        <div class="exp-when">Jun 2023 — Present</div>
-      </div>
-      <div>
-        <h3 class="exp-role">Oracle Developer / Data Analyst</h3>
-        <div class="exp-org">Regency Group — Grand Hypermarket, Kuwait</div>
-
-        <div class="exp-group">
-          <h4>SQL Reporting &amp; Analytics</h4>
-          <ul>
-            <li>Engineered <strong>50+ Oracle SQL (10g)</strong> reports in Toad — product-, brand-, category- and location-wise breakdowns — cutting ad-hoc report delivery from days to <strong>under 1 hour</strong> across 5+ departments (Sales, Purchase, Inventory, Finance, HR).</li>
-            <li>Built a daily Sales &amp; YTD comparison report (GP% and net profit) in Python, replacing a 3-hour manual process with a <strong>sub-5-minute</strong> automated run delivered to senior management every morning.</li>
-            <li>Developed instant campaign-planning reports (discount eligibility, margin impact) enabling same-day decisions for marketing and planning teams.</li>
-          </ul>
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content reveal">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          Full Stack Developer &middot; Data Engineer &middot; Oracle PL/SQL
         </div>
-
-        <div class="exp-group">
-          <h4>Power BI Dashboards</h4>
-          <ul>
-            <li>Designed and maintain a full Power BI dashboard suite (Sales, Stock, Fast-lines, Customer, HR) adopted as the primary reporting tool by management, replacing manual Excel consolidation.</li>
-            <li>Pre-aggregated Oracle views and indexed tables to reduce Power BI dashboard refresh time by <strong>~60%</strong> versus raw query loads.</li>
-          </ul>
+        <h1>Building the systems<br>behind <em>retail.</em></h1>
+        <p class="hero-lede">
+          3+ years delivering <strong>40+ projects</strong> across 11 departments for Grand Hypermarket Kuwait &mdash; from Oracle PL/SQL data warehouses and <strong>.NET 8 APIs</strong> to 15+ web portals, Python automation scripts, and delivery aggregator integrations. The full stack, from database to dashboard.
+        </p>
+        <div class="hero-meta">
+          <span><span class="dot" style="background:var(--teal);"></span>Regency Group &mdash; Grand Hypermarket</span>
+          <span><span class="dot" style="background:var(--gold);"></span>Hawalli, Kuwait</span>
+          <span><span class="dot" style="background:var(--ink-faint);"></span>Open to GCC &amp; remote</span>
         </div>
-
-        <div class="exp-group">
-          <h4>PL/SQL Development &amp; Data Engineering</h4>
-          <ul>
-            <li>Architected a data warehouse in Oracle PL/SQL (<strong>Star Schema</strong>) with full ETL procedures, indexed views and temp tables — the single source of truth for all BI and executive reporting.</li>
-            <li>Built an automated Purchase Order PL/SQL procedure triggered by stock-level rules, reducing manual PO creation effort by <strong>~80%</strong> across multiple hypermarket branches.</li>
-            <li>Created and maintain stored procedures, views and temp tables for the internal operations portal — supporting Sales, Inventory, Finance and Customer Loyalty modules.</li>
-            <li>Designed the Oracle DB schema (tables, constraints, indexes) for the retail operations web portal, ensuring data integrity across concurrent multi-location transactions.</li>
-          </ul>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects &rarr;</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-head reveal">
-      <p class="eyebrow">Selected Projects</p>
-      <h2>The work behind the résumé.</h2>
-      <p>Concrete systems tied directly to the experience above — each one replaced a manual, spreadsheet- or memory-dependent process with something indexed, automated and owned end-to-end.</p>
-    </div>
-
-    <div class="proj-grid reveal">
-
-      <div class="proj-card">
-        <div class="proj-num">01 / Data Warehousing</div>
-        <h3>Retail Data Warehouse (Star Schema)</h3>
-        <div class="proj-problem"><b>Problem —</b> BI and executive reports pulled from inconsistent raw tables with no shared source of truth.</div>
-        <p class="desc">Architected a Star Schema warehouse in Oracle PL/SQL using a Bronze → Silver → Gold layered approach, with full ETL procedures, indexed views and Gold-layer reporting views covering five analysis types: change-over-time, cumulative, performance, part-to-whole and customer/product segmentation.</p>
-        <div class="proj-impact">Impact — single source of truth for all BI; ~60% faster Power BI refresh</div>
-        <div class="tags"><span class="tag">Oracle PL/SQL</span><span class="tag">ETL</span><span class="tag">Star Schema</span></div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-num">02 / Automation</div>
-        <h3>Daily Sales &amp; YTD Reporting Automation</h3>
-        <div class="proj-problem"><b>Problem —</b> The daily GP% / net profit sales comparison sent to senior management took ~3 hours to build manually each morning.</div>
-        <p class="desc">Automated the extraction, calculation and formatting of the daily Sales vs. YTD comparison report in Python (Pandas) against the Oracle data warehouse, replacing the manual build with a scheduled, repeatable run.</p>
-        <div class="proj-impact">Impact — 3 hours → under 5 minutes, delivered to management every morning</div>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Oracle SQL</span></div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-num">03 / Automation</div>
-        <h3>Automated Purchase Order Engine</h3>
-        <div class="proj-problem"><b>Problem —</b> Purchase orders were raised manually by planners watching stock levels — slow and inconsistent across branches.</div>
-        <p class="desc">Built a PL/SQL procedure triggered by stock-level rules per article and location, generating purchase order logic automatically instead of relying on manual monitoring.</p>
-        <div class="proj-impact">Impact — ~80% less manual PO effort across multiple branches</div>
-        <div class="tags"><span class="tag">PL/SQL</span><span class="tag">Rule Engine</span></div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-num">04 / BI</div>
-        <h3>Power BI Dashboard Suite</h3>
-        <div class="proj-problem"><b>Problem —</b> Management relied on manually consolidated Excel workbooks for Sales, Stock, Fast-lines, Customer and HR reporting.</div>
-        <p class="desc">Designed and maintain a five-dashboard Power BI suite backed by pre-aggregated Oracle views and indexed tables, replacing manual Excel consolidation as management's primary reporting tool.</p>
-        <div class="proj-impact">Impact — ~60% faster refresh vs. raw queries; now the primary reporting tool for management</div>
-        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Oracle Views</span></div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-num">05 / Data Engineering</div>
-        <h3>Loyalty &amp; Ecommerce Data Integration</h3>
-        <div class="proj-problem"><b>Problem —</b> Purchase and redemption data lived in separate POS, loyalty and ecommerce systems with no unified view for reporting.</div>
-        <p class="desc">Built PL/SQL integration procedures and stored views syncing POS purchase data with the loyalty platform, and pulling order details from an external ecommerce API into the Oracle warehouse for unified reporting.</p>
-        <div class="proj-impact">Impact — single, queryable view of loyalty and ecommerce activity for reporting</div>
-        <div class="tags"><span class="tag">Oracle PL/SQL</span><span class="tag">API Integration</span><span class="tag">Loyalty Systems</span></div>
-      </div>
-
+  <!-- ═══════════════════════════════════════════════════════════════
+       STATS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Departments Served</div></div>
+      <div class="stat"><div class="stat-num">~500K</div><div class="stat-label">Records Migrated</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Web Portals Built</div></div>
+      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Automation Scripts Live</div></div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-head reveal">
-      <p class="eyebrow">Stack</p>
-      <h2>Tools I reach for.</h2>
-    </div>
-    <div class="skills-grid reveal">
-      <div class="skill-col">
-        <h4>Databases</h4>
-        <ul>
-          <li>Oracle SQL (10g)</li>
-          <li>Oracle PL/SQL</li>
-          <li>MS SQL Server</li>
-        </ul>
+  <!-- ═══════════════════════════════════════════════════════════════
+       ABOUT
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">About</div>
+        <h2>Where the database meets the business.</h2>
       </div>
-      <div class="skill-col">
-        <h4>BI &amp; Reporting</h4>
-        <ul>
-          <li>Power BI</li>
-          <li>Power BI Service</li>
-          <li>Python (Pandas)</li>
-          <li>Excel</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h4>Data Engineering</h4>
-        <ul>
-          <li>ETL</li>
-          <li>Star Schema DWH</li>
-          <li>Stored Procedures &amp; Views</li>
-          <li>Indexing</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h4>Languages</h4>
-        <ul>
-          <li>SQL / PL/SQL</li>
-          <li>Python</li>
-          <li>C#</li>
-          <li>JavaScript</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h4>Frameworks &amp; APIs</h4>
-        <ul>
-          <li>ASP.NET Core</li>
-          <li>REST APIs</li>
-          <li>Python Flask</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h4>Tools &amp; Integration</h4>
-        <ul>
-          <li>Visual Studio / VS Code</li>
-          <li>Git</li>
-          <li>ERP Integration</li>
-          <li>POS Systems</li>
-          <li>API Data Pipelines</li>
-        </ul>
+      <div class="about-grid reveal">
+        <div class="about-facts">
+          <div class="f-row"><div class="f-key">Nationality</div><div class="f-val">Indian</div></div>
+          <div class="f-row"><div class="f-key">Based in</div><div class="f-val">Hawalli, Kuwait</div></div>
+          <div class="f-row"><div class="f-key">Role</div><div class="f-val">Full Stack / Oracle Developer</div></div>
+          <div class="f-row"><div class="f-key">Company</div><div class="f-val">Regency Group &mdash; Grand Hypermarket</div></div>
+          <div class="f-row"><div class="f-key">Experience</div><div class="f-val">3+ years</div></div>
+          <div class="f-row"><div class="f-key">Domains</div><div class="f-val">Retail ERP, POS, Loyalty, E-commerce</div></div>
+          <div class="f-row"><div class="f-key">Open to</div><div class="f-val">Full Stack &middot; Backend &middot; Data Eng &middot; Retail IT</div></div>
+        </div>
+        <div class="about-body">
+          <p>I'm a full stack developer and Oracle PL/SQL engineer working inside <strong>Grand Hypermarket</strong>, one of Kuwait's high-volume, multi-branch retail chains operating across Kuwait and KSA. My work spans the entire retail technology stack &mdash; from <strong>Oracle database architecture</strong> and PL/SQL procedures to <strong>15+ ASP.NET web portals</strong>, a <strong>.NET 8 Web API</strong>, <strong>11 Python automation scripts</strong>, and integrations with WhatsApp, Talabat, Deliveroo, and e-commerce platforms.</p>
+          <span class="highlight">Every project started as a manual process. My job was to make it automated, indexed, and reliable.</span>
+          <p>That's meant architecting a Star Schema data warehouse from scratch, building a loyalty platform with WhatsApp OTP and card allocation, migrating ~500,000 customer records, automating purchase orders off live stock rules, and delivering 53 production reporting queries that cut ad-hoc report delivery from days to under an hour.</p>
+          <p>I work across <strong>three Oracle database instances</strong> with cross-database links, build with C# (.NET Framework and .NET 8 Core), automate with Python (cx_Oracle, pandas), and integrate with REST APIs, SOAP services, SFTP, SMTP, and SMB. Currently finishing my <strong>B.C.A. in Computer Applications</strong>.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="education" style="padding-top:0;">
-    <div class="section-head reveal">
-      <p class="eyebrow">Education</p>
-      <h2>Grounding.</h2>
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CAPABILITIES
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="capabilities">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">What I Do</div>
+        <h2>Four disciplines, one stack.</h2>
+        <p>From database design to web portal to scheduled automation &mdash; I build end-to-end solutions for retail operations.</p>
+      </div>
+      <div class="cap-grid reveal">
+        <div class="cap-card">
+          <div class="cap-num">01 / Backend</div>
+          <h3>Database &amp; PL/SQL Engineering</h3>
+          <p>Oracle PL/SQL stored procedures, functions, packages, DB links, and star-schema data warehouse design. 3 Oracle instances managed with cross-database queries. 53-query reporting library in production serving 5+ departments.</p>
+          <div class="cap-tags">
+            <span class="cap-tag">Oracle PL/SQL</span><span class="cap-tag">ETL</span><span class="cap-tag">Star Schema</span><span class="cap-tag">DB Links</span>
+          </div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">02 / Web</div>
+          <h3>Full Stack .NET Development</h3>
+          <p>15+ ASP.NET Web Forms portals with role-based access control and a .NET 8 Core Web API with Dapper and Swagger. jQuery, AJAX, DataTables, Bootstrap, and Tailwind CSS frontends.</p>
+          <div class="cap-tags">
+            <span class="cap-tag">ASP.NET</span><span class="cap-tag">.NET 8 Core</span><span class="cap-tag">Dapper</span><span class="cap-tag">C#</span>
+          </div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">03 / Automation</div>
+          <h3>Python Scripting &amp; Automation</h3>
+          <p>11 scheduled Python scripts in production for data sync, reporting, and notifications. Loyalty point sync, live sales summary, online price updates, POS file access via SMB, DMS document distribution.</p>
+          <div class="cap-tags">
+            <span class="cap-tag">Python</span><span class="cap-tag">cx_Oracle</span><span class="cap-tag">pandas</span><span class="cap-tag">Scheduling</span>
+          </div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">04 / Integration</div>
+          <h3>Systems &amp; API Integration</h3>
+          <p>REST APIs, SOAP web services, WhatsApp API, SFTP, SMTP, and SMB integrations. E-commerce sync, CRM sync, delivery aggregator integration (Talabat, Deliveroo, Huawei, Tap Payments).</p>
+          <div class="cap-tags">
+            <span class="cap-tag">REST</span><span class="cap-tag">SOAP</span><span class="cap-tag">WhatsApp API</span><span class="cap-tag">SFTP</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="reveal">
-      <div class="edu-row">
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       EXPERIENCE
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Experience</div>
+        <h2>What I've been building.</h2>
+      </div>
+      <div class="exp-timeline reveal">
+        <div class="exp-card">
+          <div>
+            <div class="exp-when">Jun 2023 &mdash; Present</div>
+            <div class="exp-when-org">Grand Hypermarket, Kuwait</div>
+          </div>
+          <div>
+            <h3 class="exp-role">Full Stack Developer / Oracle Developer</h3>
+            <div class="exp-org">Regency Group &mdash; Grand Hypermarket, Kuwait</div>
+
+            <div class="exp-group">
+              <h4>Database Architecture &amp; PL/SQL Development</h4>
+              <ul>
+                <li>Architected a <strong>Star Schema data warehouse</strong> in Oracle PL/SQL with full ETL procedures, indexed views, and temp tables &mdash; the single source of truth for all BI and executive reporting.</li>
+                <li>Managed <strong>3 Oracle database instances</strong> (ZEDEYE, REGENCY, REGDB) with GOLD_SERVER DB link for cross-database queries between Gold ERP/POS and Vision systems.</li>
+                <li>Engineered a library of <strong>53 production reporting queries</strong> &mdash; cutting ad-hoc report delivery from days to <strong>under 1 hour</strong> across 5+ departments.</li>
+                <li>Built an automated Purchase Order PL/SQL procedure triggered by stock-level rules, reducing manual PO creation by <strong>~80%</strong> across multiple branches.</li>
+                <li>Designed Oracle DB schema (tables, constraints, indexes) for the retail operations web portal with concurrent multi-location transaction integrity.</li>
+              </ul>
+            </div>
+
+            <div class="exp-group">
+              <h4>Web Application Development (.NET)</h4>
+              <ul>
+                <li>Developed <strong>15+ ASP.NET Web Forms portals</strong> with role-based access control (ADMIN, MANAGEMENT, PURCHASER, STOREMANAGER, CASHOFFICER) across 6 departments.</li>
+                <li>Architected <strong>GrandApiMaster</strong> &mdash; a .NET 8 ASP.NET Core Web API with 3 controllers (Ecommerce, Loyalty, Product) using Dapper, Swagger, and HttpClientFactory.</li>
+                <li>Built GrandME enrollment portal with WhatsApp OTP verification, dual-database writes, SOAP CRM sync, and REST API sync with audit logging.</li>
+                <li>Created DN Upload Portal with Excel paste-to-insert, batch processing (1,000 rows/request), and Oracle array binding for bulk inserts.</li>
+                <li>Developed voucher and promotion portals with ZXing.Net barcode generation and dynamic promotion rule engine.</li>
+              </ul>
+            </div>
+
+            <div class="exp-group">
+              <h4>Automation &amp; Data Engineering</h4>
+              <ul>
+                <li>Developed <strong>11 scheduled Python scripts</strong> in production for daily data sync between Gold ERP and Vision systems &mdash; loyalty point sync, live sales summary, online price updates, DMS distribution.</li>
+                <li>Migrated <strong>~500,000 customer records</strong> from legacy V6MENU to REGENCY database with deduplication and inactive-customer cleanup.</li>
+                <li>Built Python daily Sales &amp; YTD comparison report, replacing a 3-hour manual process with a <strong>sub-5-minute</strong> automated run.</li>
+                <li>Pre-aggregated Oracle views and indexed tables to reduce Power BI dashboard refresh time by <strong>~60%</strong>.</li>
+              </ul>
+            </div>
+
+            <div class="exp-group">
+              <h4>Systems Integration &amp; Technical Support</h4>
+              <ul>
+                <li>Integrated with <strong>REST APIs</strong> (e-commerce), <strong>SOAP</strong> (Gold CRM), <strong>WhatsApp API</strong> (OTP, alerts), <strong>SFTP</strong> (Talabat), <strong>SMTP</strong> (emails), and <strong>SMB</strong> (POS files).</li>
+                <li>Built 4 delivery aggregator portals (Talabat, Deliveroo, Huawei, Tap Payments) for bill registration, 2-step verification, and return tracking.</li>
+                <li>Designed and maintain a full <strong>Power BI dashboard suite</strong> (Sales, Stock, Fast-lines, Customer, HR) &mdash; the primary reporting tool for management.</li>
+                <li>Provided technical support across 10 issue areas: POS, vouchers, weight scales, auto PO, reception, card issues, suspended bills, mix-and-match, and entry corrections.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       PROJECTS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Selected Projects</div>
+        <h2>The work behind the r&eacute;sum&eacute;.</h2>
+        <p>Eight projects from a portfolio of 40+ &mdash; each replaced a manual process with something indexed, automated, and owned end-to-end.</p>
+      </div>
+
+      <div class="proj-list reveal">
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">01 / Data Warehousing</div>
+            <h3>Retail Data Warehouse<br>(Star Schema)</h3>
+            <div class="proj-impact">Single source of truth for all BI &middot; ~60% faster Power BI refresh</div>
+            <div class="proj-tags">
+              <span class="tag">Oracle PL/SQL</span><span class="tag">ETL</span><span class="tag">Star Schema</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> BI and executive reports pulled from inconsistent raw tables with no shared source of truth.</div>
+            <p class="desc">Architected a Star Schema warehouse in Oracle PL/SQL with full ETL procedures, indexed views, and temp tables &mdash; serving as the single source of truth for all BI and executive reporting across Sales, Inventory, Finance, and HR. Pre-aggregated Gold-layer views power the Power BI dashboard suite.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">02 / API Development</div>
+            <h3>GrandApiMaster<br>(.NET 8 Web API)</h3>
+            <div class="proj-impact">Unified API for all e-commerce &amp; loyalty operations</div>
+            <div class="proj-tags">
+              <span class="tag">.NET 8 Core</span><span class="tag">C#</span><span class="tag">Dapper</span><span class="tag">Swagger</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> E-commerce, loyalty, and product data lived in separate systems with no unified API.</div>
+            <p class="desc">Built a .NET 8 ASP.NET Core Web API with 3 controllers: Ecommerce (order sync with transactional multi-table inserts), Loyalty (customer batch sync in batches of 1,000, point sync, purchase sync), and Product (price check with Arabic conversion, promotion images via HtmlAgilityPack). Dual Oracle connections with Dapper ORM and Swagger documentation.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">03 / Loyalty Platform</div>
+            <h3>GrandME Loyalty<br>Program (6 Modules)</h3>
+            <div class="proj-impact">~500K customers migrated &middot; full loyalty lifecycle automated</div>
+            <div class="proj-tags">
+              <span class="tag">ASP.NET</span><span class="tag">C#</span><span class="tag">WhatsApp API</span><span class="tag">SOAP</span><span class="tag">ZXing.Net</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> Customer enrollment, card allocation, voucher creation, and point tracking were all manual.</div>
+            <p class="desc">Built a complete loyalty platform: customer enrollment portal with WhatsApp OTP (4-digit, 3-min expiry), card allocation from pre-loaded pool (FOR UPDATE SKIP LOCKED), voucher creation with ZXing.Net barcode generation, ~500K customer migration with deduplication, customer update portal with validation, mobile capture campaign tracking, and loyalty reporting.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">04 / Automation</div>
+            <h3>11 Scheduled Python<br>Automation Scripts</h3>
+            <div class="proj-impact">11 automated pipelines replacing daily manual sync across 3 databases</div>
+            <div class="proj-tags">
+              <span class="tag">Python</span><span class="tag">cx_Oracle</span><span class="tag">pandas</span><span class="tag">SMB</span><span class="tag">SMTP</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> Daily data sync between Gold ERP and Vision systems was manual, error-prone, and inconsistent.</div>
+            <p class="desc">Developed 11 production Python scripts using cx_Oracle for: loyalty point sync (with slab structure calculation), live sales summary sync across 2 databases, online store price/stock updates pushed to e-commerce server, POS file access via SMB, DMS document download + email distribution, missing bill recovery from POS XML files, promo flag updates, and WhatsApp image distribution.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">05 / Integration</div>
+            <h3>Talabat Delivery<br>Aggregator Suite</h3>
+            <div class="proj-impact">4 portals covering full delivery aggregator lifecycle</div>
+            <div class="proj-tags">
+              <span class="tag">ASP.NET</span><span class="tag">C#</span><span class="tag">Oracle</span><span class="tag">SFTP</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> In-store POS bills and online delivery orders had no reconciliation system.</div>
+            <p class="desc">Built 4 integration portals: bill registration with 2-step verification workflow (Store Manager to Cash Officer), price/stock SFTP update to Talabat server (SQL*Plus SPOOL to CSV), return registration with missing-item tracking for stock correction, and return reporting. Supports 6 aggregator types: Talabat, Deliveroo, Huawei, Tap Payments, Katch, Wiyak.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">06 / Automation</div>
+            <h3>Automated Purchase<br>Order Engine</h3>
+            <div class="proj-impact">~80% less manual PO effort across multiple branches</div>
+            <div class="proj-tags">
+              <span class="tag">Oracle PL/SQL</span><span class="tag">DB Links</span><span class="tag">Rule Engine</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> Purchase orders were raised manually by planners watching stock levels &mdash; slow and inconsistent.</div>
+            <p class="desc">Built a PL/SQL function (KWT_STORE_TO_WH_AUTO_ORDER) generating warehouse-to-store replenishment orders based on stock movement, pending shipments, damage data, and orderable pack conversion. Uses GOLD_SERVER DB link for real-time stock data across all branches.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">07 / Inventory</div>
+            <h3>Inventory Management<br>Suite (6 Projects)</h3>
+            <div class="proj-impact">6 systems covering the full inventory lifecycle</div>
+            <div class="proj-tags">
+              <span class="tag">Oracle PL/SQL</span><span class="tag">ASP.NET</span><span class="tag">PDT Scanners</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> Stock movement tracking, annual counts, inconsistency analysis, and negative stock management were scattered.</div>
+            <p class="desc">Built 6 inventory projects: full stock movement ledger (sales, purchases, returns, transfers, adjustments), annual physical inventory with PDT scanners and PL/SQL variance procedures, daily stock take batch creation, inconsistency/sales-loss analysis portal with remarks workflow, negative stock management, and fresh inventory view.</p>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-left">
+            <div class="proj-num">08 / Reporting</div>
+            <h3>One-Day Promo<br>WhatsApp Alerts</h3>
+            <div class="proj-impact">Real-time promo visibility for management via WhatsApp</div>
+            <div class="proj-tags">
+              <span class="tag">C#</span><span class="tag">.NET Console</span><span class="tag">wkhtmltoimage</span><span class="tag">WhatsApp API</span>
+            </div>
+          </div>
+          <div class="proj-right">
+            <div class="proj-problem"><b>Problem &mdash;</b> Sales performance for one-day promotions wasn't visible until after the promotion ended.</div>
+            <p class="desc">Built a .NET console app that generates a live sales snapshot for promo items, renders as a formatted HTML table image (wkhtmltoimage) with conditional cell coloring (pink for zero sales, yellow for low sales), and distributes via WhatsApp API to configured recipients in real-time.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SKILLS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Stack</div>
+        <h2>Tools I reach for.</h2>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-col">
+          <h4>Databases</h4>
+          <ul>
+            <li>Oracle SQL (10g)</li>
+            <li>Oracle PL/SQL</li>
+            <li>MS SQL Server</li>
+            <li>DB Links &amp; MERGE</li>
+            <li>Stored Procedures</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Backend</h4>
+          <ul>
+            <li>C# (.NET Framework 4.6)</li>
+            <li>.NET 8 / ASP.NET Core</li>
+            <li>ASP.NET Web Forms</li>
+            <li>Dapper ORM</li>
+            <li>.NET Console Apps</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Scripting</h4>
+          <ul>
+            <li>Python (cx_Oracle)</li>
+            <li>Python (pandas, openpyxl)</li>
+            <li>Batch Scripts</li>
+            <li>SQL*Plus SPOOL</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Frontend</h4>
+          <ul>
+            <li>HTML / CSS</li>
+            <li>JavaScript</li>
+            <li>jQuery &amp; AJAX</li>
+            <li>Bootstrap 3/5</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Integrations</h4>
+          <ul>
+            <li>REST APIs</li>
+            <li>SOAP Web Services</li>
+            <li>WhatsApp API</li>
+            <li>SFTP / SMTP / SMB</li>
+            <li>Swagger / HttpClient</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>BI &amp; Reporting</h4>
+          <ul>
+            <li>Power BI</li>
+            <li>ETL / Star Schema DWH</li>
+            <li>ClosedXML (Excel)</li>
+            <li>ZXing.Net (Barcode)</li>
+            <li>wkhtmltoimage</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Tools</h4>
+          <ul>
+            <li>Visual Studio</li>
+            <li>VS Code</li>
+            <li>Toad / SQL Developer</li>
+            <li>Git</li>
+            <li>WinSCP</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Domain</h4>
+          <ul>
+            <li>Retail ERP / POS</li>
+            <li>Loyalty Programs</li>
+            <li>Inventory Management</li>
+            <li>GP Reporting</li>
+            <li>Delivery Aggregators</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Soft Skills</h4>
+          <ul>
+            <li>Root Cause Analysis</li>
+            <li>Cross-team Coordination</li>
+            <li>Technical Support</li>
+            <li>Process Documentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       EDUCATION
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="education" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Education</div>
+        <h2>Grounding.</h2>
+      </div>
+      <div class="reveal">
+        <div class="edu-row">
+          <div>
+            <div class="edu-what">B.C.A &mdash; Computer Applications <span style="color:var(--ink-faint); font-size:13px;">(in progress)</span></div>
+            <div class="edu-where">KL University, India</div>
+          </div>
+          <div class="edu-when">Expected Feb 2027</div>
+        </div>
+        <div class="edu-row">
+          <div>
+            <div class="edu-what">Diploma &mdash; Computer Engineering <span style="color:var(--ink-faint); font-size:13px;">(CGPA 8.6)</span></div>
+            <div class="edu-where">SSM Polytechnic College, Kerala, India</div>
+          </div>
+          <div class="edu-when">Graduated Feb 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CONTACT
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-inner reveal">
         <div>
-          <div class="edu-what">B.C.A — Computer Applications <span style="color:var(--ink-faint); font-size:13px;">(in progress)</span></div>
-          <div class="edu-where">KL University, India</div>
+          <div class="section-eyebrow">Contact</div>
+          <h2>Let's build <em>something.</em></h2>
+          <p class="contact-sub">Open to Full Stack, Backend, Data Engineering, and Retail IT roles across Kuwait, the GCC, and remote.</p>
         </div>
-        <div class="edu-when">Expected Feb 2027</div>
-      </div>
-      <div class="edu-row">
-        <div>
-          <div class="edu-what">Diploma — Computer Engineering <span style="color:var(--ink-faint); font-size:13px;">(CGPA 8.6)</span></div>
-          <div class="edu-where">SSM Polytechnic College, Kerala, India</div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:musfirmohammed555@gmail.com">
+            <span class="cl-label">Email</span><span class="cl-value">musfirmohammed555@gmail.com</span>
+          </a>
+          <a class="contact-link" href="https://wa.me/918136815976" target="_blank" rel="noopener">
+            <span class="cl-label">WhatsApp / Phone</span><span class="cl-value">+91 8136815976 / +965 6067 2804</span>
+          </a>
+          <a class="contact-link" href="https://linkedin.com/in/mohammed-musfir-t" target="_blank" rel="noopener">
+            <span class="cl-label">LinkedIn</span><span class="cl-value">/in/mohammed-musfir-t</span>
+          </a>
+          <a class="contact-link" href="https://github.com/musfir5" target="_blank" rel="noopener">
+            <span class="cl-label">GitHub</span><span class="cl-value">/musfir5</span>
+          </a>
         </div>
-        <div class="edu-when">Graduated Feb 2023</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-wrap reveal">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2>Let's talk data.</h2>
-        <p style="color:var(--ink-dim); margin-top:16px; max-width:42ch; font-size:15.5px;">Open to Oracle PL/SQL, BI, data integration and junior data engineering roles across Kuwait, the GCC and remote.</p>
-          <!--   <a href="assets/Mohammed_Musfir_CV.pdf" download class="btn btn-primary" style="margin-top:28px;">Download CV</a> -->
-      </div>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:musfirmohammed555@gmail.com">
-          <span class="cl-label">Email</span><span class="cl-value">musfirmohammed555@gmail.com</span>
-        </a>
-        <a class="contact-link" href="https://wa.me/918136815976" target="_blank" rel="noopener">
-          <span class="cl-label">WhatsApp / Phone</span><span class="cl-value">+91 8136815976/+965 6067 2804</span>
-        </a>
-        <a class="contact-link" href="https://linkedin.com/in/mohammed-musfir-t" target="_blank" rel="noopener">
-          <span class="cl-label">LinkedIn</span><span class="cl-value">/in/mohammed-musfir-t</span>
-        </a>
-        <a class="contact-link" href="https://github.com/musfir5" target="_blank" rel="noopener">
-          <span class="cl-label">GitHub</span><span class="cl-value">/musfir5</span>
-        </a>
       </div>
     </div>
   </section>
 
   <footer>
-    <span>© 2026 Mohammed Musfir T T. Built with care, not a template.</span>
-    <span>Hawalli, Kuwait</span>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
+      <span>&copy; 2026 Mohammed Musfir T T. Built with care, not a template.</span>
+      <span>Hawalli, Kuwait</span>
+    </div>
   </footer>
 
 </main>
 
-</body>
+<script>
+  // Scroll progress bar
+  const scrollBar = document.getElementById('scrollBar');
+  // Auto-hide nav on scroll down, show on scroll up
+  const nav = document.getElementById('nav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPct = (scrollTop / docHeight) * 100;
+    scrollBar.style.width = scrollPct + '%';
+
+    // Nav hide/show
+    if (scrollTop > lastScroll && scrollTop > 200) {
+      nav.classList.add('hidden');
+    } else {
+      nav.classList.remove('hidden');
+    }
+    lastScroll = scrollTop;
+  });
+
+  // Reveal on scroll using IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('section > .container > .section-head, .about-grid, .cap-grid, .exp-timeline, .proj-list, .skills-grid, .contact-inner').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
   <script defer src="https://webtracker-opal.vercel.app/script.js" data-website-id="d910a72e-9eeb-4381-b735-07a23bd3ab1e"></script>
   <script defer src="https://webtracker-opal.vercel.app/recorder.js" data-website-id="d910a72e-9eeb-4381-b735-07a23bd3ab1e"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>
