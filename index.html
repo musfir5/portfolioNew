@@ -599,18 +599,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       STATS
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="stats">
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Projects Delivered</div></div>
-      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Departments Served</div></div>
-      <div class="stat"><div class="stat-num">~500K</div><div class="stat-label">Records Migrated</div></div>
-      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Web Portals Built</div></div>
-      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Automation Scripts Live</div></div>
-    </div>
-  </section>
 
   <!-- ═══════════════════════════════════════════════════════════════
        ABOUT
@@ -715,7 +703,7 @@
               <h4>Database Architecture &amp; PL/SQL Development</h4>
               <ul>
                 <li>Architected a <strong>Star Schema data warehouse</strong> in Oracle PL/SQL with full ETL procedures, indexed views, and temp tables &mdash; the single source of truth for all BI and executive reporting.</li>
-                <li>Managed <strong>3 Oracle database instances</strong> (ZEDEYE, REGENCY, REGDB) with GOLD_SERVER DB link for cross-database queries between Gold ERP/POS and Vision systems.</li>
+                <li>Managed <strong>3 Oracle database instances</strong> DB link for cross-database queries between Gold ERP/POS and Vision systems.</li>
                 <li>Engineered a library of <strong>53 production reporting queries</strong> &mdash; cutting ad-hoc report delivery from days to <strong>under 1 hour</strong> across 5+ departments.</li>
                 <li>Built an automated Purchase Order PL/SQL procedure triggered by stock-level rules, reducing manual PO creation by <strong>~80%</strong> across multiple branches.</li>
                 <li>Designed Oracle DB schema (tables, constraints, indexes) for the retail operations web portal with concurrent multi-location transaction integrity.</li>
@@ -737,7 +725,7 @@
               <h4>Automation &amp; Data Engineering</h4>
               <ul>
                 <li>Developed <strong>11 scheduled Python scripts</strong> in production for daily data sync between Gold ERP and Vision systems &mdash; loyalty point sync, live sales summary, online price updates, DMS distribution.</li>
-                <li>Migrated <strong>~500,000 customer records</strong> from legacy V6MENU to REGENCY database with deduplication and inactive-customer cleanup.</li>
+                <li>Migrated <strong>~500,000 customer records</strong> from legacy DB to new DB database with deduplication and inactive-customer cleanup.</li>
                 <li>Built Python daily Sales &amp; YTD comparison report, replacing a 3-hour manual process with a <strong>sub-5-minute</strong> automated run.</li>
                 <li>Pre-aggregated Oracle views and indexed tables to reduce Power BI dashboard refresh time by <strong>~60%</strong>.</li>
               </ul>
@@ -859,7 +847,7 @@
           </div>
           <div class="proj-right">
             <div class="proj-problem"><b>Problem &mdash;</b> Purchase orders were raised manually by planners watching stock levels &mdash; slow and inconsistent.</div>
-            <p class="desc">Built a PL/SQL function (KWT_STORE_TO_WH_AUTO_ORDER) generating warehouse-to-store replenishment orders based on stock movement, pending shipments, damage data, and orderable pack conversion. Uses GOLD_SERVER DB link for real-time stock data across all branches.</p>
+            <p class="desc">Built a PL/SQL function generating warehouse-to-store replenishment orders based on stock movement, pending shipments, damage data, and orderable pack conversion. Uses GOLD_SERVER DB link for real-time stock data across all branches.</p>
           </div>
         </div>
 
