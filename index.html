@@ -139,7 +139,7 @@
   /* Hero layout: text + photo */
   .hero-grid{
     display:grid;
-    grid-template-columns:1.4fr 1fr;
+    grid-template-columns:1fr 260px;
     gap:64px;
     align-items:center;
   }
@@ -148,7 +148,7 @@
     z-index:1;
     justify-self:center;
     width:100%;
-    max-width:380px;
+    max-width:260px;
     aspect-ratio:1 / 1;
   }
   .hero-photo::before{               /* gold offset frame */
@@ -169,7 +169,7 @@
   }
   @media (max-width:900px){
     .hero-grid{ grid-template-columns:1fr; gap:40px; }
-    .hero-photo{ order:-1; max-width:220px; justify-self:start; }
+    .hero-photo{ order:-1; max-width:160px; justify-self:start; }
   }
 
   .hero-tag{
@@ -561,6 +561,7 @@
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
+    <a class="nav-cta" href="assets/Mohammed_Musfir_CV.pdf" download>Download CV</a>
   </div>
 </nav>
 
@@ -593,7 +594,7 @@
       </div>
 
       <div class="hero-photo reveal">
-        <img src="assets/profile.png" alt="Mohammed Musfir T" width="180" height="180">
+        <img src="assets/profile.png" alt="Mohammed Musfir T T" width="260" height="260">
       </div>
 
     </div>
